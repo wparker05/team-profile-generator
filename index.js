@@ -4,10 +4,10 @@ const fs = require('fs');
 const choices = (choice) =>{
   switch(choice){
     case 'Engineer':
-
+      engineer();
       break;
     case 'Intern':
-
+      intern();
       break;
     case 'Finish building team':
 
@@ -45,10 +45,44 @@ const engineer = () =>{
         ]
       }   
   ])
+  .then((answers) =>{
+    choices(answers.member);
+  })
 }
 
 const intern = () =>{
-  
+  inqurier
+  .prompt([
+      {
+          message: 'What is your intern name?',
+          name:'manager'
+      },
+      {
+        message: 'What is your intern ID?',
+        name:'employeeID'
+      },
+      { 
+        message: 'What is your intern email address?',
+        name:'email'
+      },
+      {
+        message: 'What school does your intern attend?',
+        name: 'school'
+      },
+      {
+        type: 'list',
+        message: 'Would you like to add another team member?',
+        name: 'member',
+        choices: [
+          'Engineer',
+          'Intern',
+          'Finish building team'
+        ]
+      } 
+  ]) 
+  .then((answers) =>{
+    choices(answers.member);
+  }) 
 }
 
 const finished = () =>{
@@ -84,3 +118,6 @@ inqurier
           ]
         }   
     ])
+    .then((answers) =>{
+      choices(answers.member);
+    })
