@@ -1,5 +1,8 @@
 const inqurier = require('inquirer');
 const fs = require('fs');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 const choices = (choice) =>{
   switch(choice){
@@ -10,17 +13,18 @@ const choices = (choice) =>{
       intern();
       break;
     case 'Finish building team':
-
+      finished();
       break;
   }
 }
+const arr = [];
 
 const engineer = () =>{
   inqurier
   .prompt([
       {
           message: 'What is your engineer name?',
-          name:'manager'
+          name:'eName'
       },
       {
         message: 'What is your engineer employee ID?',
@@ -46,6 +50,8 @@ const engineer = () =>{
       }   
   ])
   .then((answers) =>{
+    const employee = new Engineer(answers.eName, answers.employeeID, answers.email, answers.github)
+    arr.push(employee);
     choices(answers.member);
   })
 }
@@ -55,11 +61,11 @@ const intern = () =>{
   .prompt([
       {
           message: 'What is your intern name?',
-          name:'manager'
+          name:'iName'
       },
       {
         message: 'What is your intern ID?',
-        name:'employeeID'
+        name:'internID'
       },
       { 
         message: 'What is your intern email address?',
@@ -81,12 +87,14 @@ const intern = () =>{
       } 
   ]) 
   .then((answers) =>{
+    const intern = new Intern(answers.iName, answers.internID, answers.email, answers.school);
+    arr.push(intern);
     choices(answers.member);
   }) 
 }
 
 const finished = () =>{
-  
+  console.log(arr);
 }
 
 inqurier
@@ -119,5 +127,7 @@ inqurier
         }   
     ])
     .then((answers) =>{
+      const manager = new Manager(answers.manager, answers.employeeID, answers.email, answers.phoneNumber);
+      arr.push(manager);
       choices(answers.member);
     })
