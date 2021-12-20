@@ -3,6 +3,9 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const team = require('./src/page-template');
+
+
 
 const choices = (choice) =>{
   switch(choice){
@@ -17,7 +20,7 @@ const choices = (choice) =>{
       break;
   }
 }
-const arr = [];
+const arrTeam = [];
 
 const engineer = () =>{
   inqurier
@@ -51,7 +54,7 @@ const engineer = () =>{
   ])
   .then((answers) =>{
     const employee = new Engineer(answers.eName, answers.employeeID, answers.email, answers.github)
-    arr.push(employee);
+    arrTeam.push(employee);
     choices(answers.member);
   })
 }
@@ -88,13 +91,13 @@ const intern = () =>{
   ]) 
   .then((answers) =>{
     const intern = new Intern(answers.iName, answers.internID, answers.email, answers.school);
-    arr.push(intern);
+    arrTeam.push(intern);
     choices(answers.member);
   }) 
 }
 
 const finished = () =>{
-  console.log(arr);
+  fs.writeFileSync('./dist/team.html', team(arrTeam), 'utf-8');
 }
 
 inqurier
@@ -128,6 +131,6 @@ inqurier
     ])
     .then((answers) =>{
       const manager = new Manager(answers.manager, answers.employeeID, answers.email, answers.phoneNumber);
-      arr.push(manager);
+      arrTeam.push(manager);
       choices(answers.member);
     })
