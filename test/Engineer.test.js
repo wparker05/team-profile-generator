@@ -9,12 +9,14 @@ describe("Engineer class", () => {
         })
     })
 
-    // describe('getRole', () => {
-    //     it("should return object role ",() => { 
-    //       
-    //        
-    //     });
-    // })
+    describe('getRole', () => {
+        it("should return object role ",() => { 
+            const engineer = new Engineer();
+            const role = "Engineer"
+            expect(engineer.getRole()).toEqual(role);
+           
+        });
+    })
 
     // describe('getGihub', () => {
     //     it("should return object github name ",() => { 

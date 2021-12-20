@@ -9,12 +9,14 @@ describe("Manager class", () => {
         })
     })
 
-    // describe('getRole', () => {
-    //     it("should return object role",() => { 
-    //       
-    //        
-    //     });
-    // })
+    describe('getRole', () => {
+        it("should return object role",() => { 
+          const manager = new Manager();
+          const role = "Manager"
+          expect(manager.getRole()).toEqual(role);
+           
+        });
+    })
 
     // describe('getOfficeNumber', () => {
     //     it("should return object office number ",() => { 

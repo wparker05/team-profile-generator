@@ -9,12 +9,14 @@ describe("Intern class", () => {
         })
     })
 
-    // describe('getRole', () => {
-    //     it("should return object role ",() => { 
-    //       
-    //        
-    //     });
-    // })
+    describe('getRole', () => {
+        it("should return object role ",() => { 
+            const intern = new Intern();
+            const role = "Intern"
+            expect(intern.getRole()).toEqual(role);
+           
+        });
+    })
 
     // describe('getSchool', () => {
     //     it("should return object school name ",() => { 
