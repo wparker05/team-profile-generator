@@ -18,11 +18,11 @@ describe("Engineer class", () => {
         });
     })
 
-    // describe('getGihub', () => {
-    //     it("should return object github name ",() => { 
-    //       
-    //        
-    //     });
-    // })
+    describe('getGihub', () => {
+        it("should return object github name and be a string",() => { 
+          expect(new Engineer("matt", 1, "matt@gmail.com", "matt2021").getGithub()).toEqual("matt2021");
+        expect(new Engineer("matt", 1, "matt@gmail.com", "matt2021").getGithub()).toEqual(expect.any(String));
+        });
+    })
 
 })

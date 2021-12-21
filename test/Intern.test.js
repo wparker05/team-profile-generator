@@ -18,11 +18,13 @@ describe("Intern class", () => {
         });
     })
 
-    // describe('getSchool', () => {
-    //     it("should return object school name ",() => { 
-    //       
-    //        
-    //     });
-    // })
+    describe('getSchool', () => {
+        it("should return object school name and be a string ",() => { 
+          const intern = new Intern('Wes', 1, 'wes@gmail.com', "UNCC");
+          expect(intern.getSchool()).toEqual('UNCC');
+          expect(intern.getSchool()).toEqual(expect.any(String));
+           
+        });
+    })
 
 })

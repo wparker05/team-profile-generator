@@ -18,11 +18,13 @@ describe("Manager class", () => {
         });
     })
 
-    // describe('getOfficeNumber', () => {
-    //     it("should return object office number ",() => { 
-    //       
-    //        
-    //     });
-    // })
+    describe('getOfficeNumber', () => {
+        it("should return object office number ",() => { 
+          const manager = new Manager("santa", 1, "santa@northpole.com", "555-555-5555");
+          expect(manager.getOfficeNumber()).toEqual('555-555-5555');
+          expect(manager.getOfficeNumber()).toEqual(expect.any(String));
+           
+        });
+    })
 
 })
